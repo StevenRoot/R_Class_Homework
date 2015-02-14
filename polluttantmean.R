@@ -14,8 +14,29 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
 
   
   # test to see if directory exists...
+  if (file.exists(directory))
+  {
+    result_vec<-NULL
+    for (i in seq (along=id))
+    {
+      fname<-file.path(directory,sprintf("%03d.csv",id[i]))
+      if (file.exists(fname))
+      {
+        dataframe<-read.csv(fname)
+        # confirm the field
+        if(pollutant %in% colnames(dataframe))
+        {
+          result_vec<-c(result_vec, dataframe[,pollutant])
+        }
+      }
+    }
+    mean(result_vec, na.rm=TRUE)
+  }
+  else 
+  {
+    NULL
+  }
   # if it exists  then go through and 1 by 1 pull the data for each
   # file and add that to a summary vector
-  # finally take mean of summary vector and return
-
+  # finally take mean of summary vector and return  
 }
