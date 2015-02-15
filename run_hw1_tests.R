@@ -1,6 +1,8 @@
 library('RUnit')
 
-source('polluttantmean.R')
+source('pollutantmean.R')
+source('complete.R')
+source('corr.R')
 
 test.suite <- defineTestSuite("hw1",
                               dirs = file.path(getwd(), "tests"),
