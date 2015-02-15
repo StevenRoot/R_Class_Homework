@@ -12,4 +12,24 @@ complete <- function(directory, id = 1:332) {
   ## ...
   ## where 'id' is the monitor ID number and 'nobs' is the
   ## number of complete cases
+
+  if (file.exists(directory))
+  {    
+    return_matrix<-matrix(nrow = 0, ncol=2, dimnames=list(c(),c("id","nobs")))
+    for (i in seq (along=id))
+    {
+      fname<-file.path(directory,sprintf("%03d.csv",id[i]))
+      if (file.exists(fname))
+      {
+        dataframe<-read.csv(fname)
+        file_result<-matrix(c(id[i],sum(complete.cases(dataframe))), nrow=1,ncol=2)
+        return_matrix<-rbind(return_matrix,file_result)    
+      }
+    }
+    return_matrix
+  }
+  else
+  {
+    NULL
+  }
 }
