@@ -12,10 +12,10 @@ complete <- function(directory, id = 1:332) {
   ## ...
   ## where 'id' is the monitor ID number and 'nobs' is the
   ## number of complete cases
-
+  return_matrix<-matrix(nrow = 0, ncol=2, dimnames=list(c(),c("id","nobs")))
+  
   if (file.exists(directory))
   {    
-    return_matrix<-matrix(nrow = 0, ncol=2, dimnames=list(c(),c("id","nobs")))
     for (i in seq (along=id))
     {
       fname<-file.path(directory,sprintf("%03d.csv",id[i]))
@@ -26,10 +26,6 @@ complete <- function(directory, id = 1:332) {
         return_matrix<-rbind(return_matrix,file_result)    
       }
     }
-    return_matrix
   }
-  else
-  {
-    NULL
-  }
+  as.data.frame(return_matrix)
 }

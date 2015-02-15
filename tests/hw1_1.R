@@ -15,30 +15,28 @@ test.hw3<- function()
 
 test.hw4<- function()
 {
-  expected_result<-matrix(c(1,117),nrow = 1, ncol=2, dimnames=list(c(),c("id","nobs")))
+  expected_result<-as.data.frame(matrix(c(1,117),nrow = 1, ncol=2, dimnames=list(c(),c("id","nobs"))))
   
   checkEquals(expected_result, complete("specdata", 1))
 }
 
-
-
 test.hw5<- function()
 {
-  expected_result<-matrix(c(2, 4, 8, 10, 12, 1041, 474, 192, 148, 96),nrow = 5, ncol=2, dimnames=list(c(),c("id","nobs")))
+  expected_result<-as.data.frame(matrix(c(2, 4, 8, 10, 12, 1041, 474, 192, 148, 96),nrow = 5, ncol=2, dimnames=list(c(),c("id","nobs"))))
   
   checkEquals(expected_result, complete(file.path(getwd(),"specdata"), c(2, 4, 8, 10, 12)))
 }  
 
 test.hw6<- function()
 {
-  expected_result<-matrix(c(30, 29, 28, 27, 26, 25, 932, 711, 475, 338, 586, 463), nrow = 6, ncol=2, dimnames=list(c(),c("id","nobs")))
+  expected_result<-as.data.frame(matrix(c(30, 29, 28, 27, 26, 25, 932, 711, 475, 338, 586, 463), nrow = 6, ncol=2, dimnames=list(c(),c("id","nobs"))))
   
   checkEquals(expected_result, complete(file.path(getwd(),"specdata"), 30:25))
 } 
 
 test.hw7<- function()
 {
-  expected_result<-matrix(c(3, 243), nrow = 1, ncol=2, dimnames=list(c(),c("id","nobs")))
+  expected_result<-as.data.frame(matrix(c(3, 243), nrow = 1, ncol=2, dimnames=list(c(),c("id","nobs"))))
   
   checkEquals(expected_result, complete(file.path(getwd(),"specdata"), 3))
 }  
