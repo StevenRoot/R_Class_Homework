@@ -4,6 +4,12 @@ test.hw1 <- function()
   checkEquals(expected_result, best("TX","heart attack"))
 }
 
+test.hw2 <- function()
+{
+  expected_result <- "FORT DUNCAN MEDICAL CENTER"
+  checkEquals(expected_result, best("TX", "heart failure"))
+}
+
 test.hw5 <- function()
 {
   #expected_result <- "Error in best(""BB", ""heart attack""") : invalid state"
@@ -42,13 +48,6 @@ if (FALSE)
   {
     expected_result <- "00Error in stop_test() : invalid state"
     checkException(dont_stop_test(), expected_result)
-  }
-  
-  
-  test.hw2 <- function()
-  {
-    expected_result <- "FORT DUNCAN MEDICAL CENTER"
-    checkEquals(expected_result, best("TX", "heart failure"))
   }
   test.hw3 <- function()
   {

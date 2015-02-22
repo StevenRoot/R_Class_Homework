@@ -14,9 +14,14 @@ best <- function(state, outcome) {
   # valid if state is int he state column and malady s in the column names....
   if ((outcome_valid == TRUE) & (state_valid == TRUE))
   {
+    # a subset by state....
+    outcome_subset <- subset(outcome_data, State==state)
+    # now sort the subset by the outcome and the name
+    s_outcome_subset <- outcome_subset[order(outcome_subset[final_outcome], outcome_subset["Hospital.Name"]),]
+    
     ## Return hospital name in that state with lowest 30-day death
     ## rate
-    
+    as.character(s_outcome_subset[1, "Hospital.Name"])
   }
   else if (!outcome_valid)
   {
