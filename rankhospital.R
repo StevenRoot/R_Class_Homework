@@ -19,8 +19,11 @@ rankhospital <- function(state, outcome, num = "best") {
   if ((outcome_valid == TRUE) & (state_valid == TRUE))
   {
     # a subset by state....
-    outcome_subset <- subset(outcome_data, State==state, final_outcome != "Not Available")
-
+    outcome_subset <- subset(outcome_data, State==state)
+    outcome_only <- outcome_subset[final_outcome]
+    outcome_only <- complete.cases(as.numeric(as.character(outcome_only[,1])))
+    outcome_subset <- outcome_subset[outcome_only,]
+    
     # now sort the subset by the outcome and the name
     #s_outcome_subset <- outcome_subset[order(outcome_subset[final_outcome], outcome_subset["Hospital.Name"]),]
     s_outcome_subset <- outcome_subset[order(as.numeric(as.character(outcome_subset[,final_outcome])), outcome_subset[,"Hospital.Name"]),]    
